@@ -1,0 +1,16 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "content"
+    label: "Sayfa İçeriği"
+    files:
+      - name: "home"
+        label: "Ana Sayfa"
+        file: "index.html"
+        fields:
+          - { label: "İçerik", name: "body", widget: "markdown" }
