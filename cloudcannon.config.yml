@@ -1,0 +1,7 @@
+paths:
+  source: /
+  public: /
+site:
+  name: manual_prm
+
+collections: {}
