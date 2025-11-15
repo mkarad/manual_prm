@@ -1,0 +1,717 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Manual - PRM/Worklist temizKopya</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2aba9ca9-e2ba-819a-b6d1-f6b663c6ae8e" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/met_silk_kashan_carpet.jpg" style="object-position:center 50%"/><h1 class="page-title">Manual - PRM/Worklist temizKopya</h1><p class="page-description"></p></header><div class="page-body"><p id="2aba9ca9-e2ba-810c-9f17-d9b15d02ebf2" class="">Oluşturulma Tarihi: 5.11.2025 - <em>Redakte 13.11.25</em></p><nav id="2aca9ca9-e2ba-80e1-bd61-cc7b8491fed7" class="block-color-gray_background table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-8147-919d-fb23e2d42fc4">Kullanıcı tipleri, Kullanıcıların akıştaki sorumlulukları</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-812a-b1eb-fe2694930f23">Hasta ve Aktivite Kavramları</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-819a-a61d-ea83902396a7">Hasta ile aktivite farkı </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-81c7-879f-eb4f7eb15642">Hangi durumlarda yeni aktivite açılır, hangi durumlarda açılmaz?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-804e-8472-c0a5860ee9e1">Yeni aktivite açılması gereken durumlar</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2aca9ca9-e2ba-80f5-8943-e32d0e25f4bf">Hangi durumlarda aktivite oluşturulmamalıdır?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-81fb-9983-c0f1da021b4c">Aktivitenin İlerlemesi ve Sonlandırılması</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-81a2-abbe-ece2fb007550">Adım Adım Yeni Aktivite Oluşturma</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-81e2-8f30-cb588f6f0f3f">Hasta Arama</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-8171-b07b-c6ed2329a5a8"><strong>Yeni hasta kaydı oluşturma (Arama sonucu kayıt çıkmadığında)</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-810b-834b-e1f4b9ae6948"><strong>Mevcut hastada aktivite kaydı oluşturma</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-8197-8ace-f6c35c3b9e63">Aktivite Oluşturma</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-8194-8885-d4fcd00988f3">Medikal Değerlendirme/Yanıt (Faz 1)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2aca9ca9-e2ba-80e5-a14a-d3d2a6a1455b"><mark class="highlight-default"><mark class="highlight-purple_background">Aktiviteyi Şubeye Atama</mark></mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-8177-9a28-cc8232c43f70"><mark class="highlight-orange_background">Hekim Ekleme</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-8061-8a94-e677ed1990c6"><mark class="highlight-orange_background">Hekime Danışma ve Gelen Yanıtın Sisteme Alınması</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-80f5-9b39-da1f79ee4c03"><mark class="highlight-orange_background">Hekime Mail Gönder</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-80f5-a80e-ce919588a1e3"><mark class="highlight-orange_background">Hekimin Yanıtının Sisteme Girilmesi</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-8035-9c80-cf299b676470"><mark class="highlight-orange_background">Hekim Önerilerinin Fiyatlandırılması ve Tedavi Taslağı Oluşturma</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-80d1-aab9-e50a4afe2f38"><mark class="highlight-orange_background">Smart Pricing</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2aba9ca9-e2ba-8092-9ee9-e9105c58de2b"><mark class="highlight-orange_background">Tedavi Planı Ekleme</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2aca9ca9-e2ba-8011-9738-cabc321c9a83"><mark class="highlight-purple_background">Hastaya Yanıtın İletilmesi ve Takibi</mark></a></div></nav><h1 id="2aba9ca9-e2ba-8147-919d-fb23e2d42fc4" class="">Kullanıcı tipleri, Kullanıcıların akıştaki sorumlulukları</h1><div id="2aba9ca9-e2ba-8167-9140-c530344ff1c5" class="column-list"><div id="2aba9ca9-e2ba-81f7-9389-c2a352d7e36f" style="width:100%" class="column"><p id="2aba9ca9-e2ba-815d-a414-fd025028e051" class="block-color-purple_background"><strong>Merkez/Ofis</strong></p><ul id="2aba9ca9-e2ba-8176-b10e-f09a9c22a585" class="bulleted-list"><li style="list-style-type:disc">Yeni Hasta (Müşteri) kaydı oluşturur.</li></ul><ul id="2aba9ca9-e2ba-81f9-9494-d45a82f6f8a3" class="bulleted-list"><li style="list-style-type:disc">Yeni oluşturduğu hasta profilinde yada önceden kurumumuzda tedavi almış hasta profili üzerinden aktivite açar.</li></ul><ul id="2aba9ca9-e2ba-81cf-a161-f1a2b4bb54f9" class="bulleted-list"><li style="list-style-type:disc">Oluşturulan aktivitenin medikal açıdan değerlendirilmesi amacıyla şubeye delege eder.</li></ul><ul id="2aba9ca9-e2ba-818b-944d-e1a2048cd42b" class="bulleted-list"><li style="list-style-type:disc">Medikal değerlendirme esnasında talep edilebilecek ekstra rapor ve dokümanların temini için hasta ile iletişime geçer.</li></ul><ul id="2aba9ca9-e2ba-814d-9019-f3fe7835d1c5" class="bulleted-list"><li style="list-style-type:disc">Şubeden iletilen olası tedavi planını hastayla paylaşır. Kurumumuzda tedavi alıp almayacağı sürecini takip eder.</li></ul><ul id="2aba9ca9-e2ba-8153-969d-c4b35fc0a93f" class="bulleted-list"><li style="list-style-type:disc">Hastanın kurumumuzda tedavi olmaya karar vermesiyle beraber (yada direkt olarak randevu talep ettiğinde) randevu talebini ve detaylarını şubeyle paylaşır.</li></ul><ul id="2aba9ca9-e2ba-81e8-a8d2-f678bfc823f3" class="bulleted-list"><li style="list-style-type:disc">Randevusu alınan hastaya randevu detaylarını iletir; randevu gün ve saatine kadar randevuya gelme sürecini takip eder. Olası değişiklik ve iptallerde şubeye bilgilendirme yapar.</li></ul><ul id="2aba9ca9-e2ba-815a-ad8e-e8e63d71cdc4" class="bulleted-list"><li style="list-style-type:disc">Randevusuna bir sebepten gelemeyen hastaların aktivitelerinin durumunu günceller. </li></ul></div><div id="2aba9ca9-e2ba-8119-9588-e90cf22160a6" style="width:100%" class="column"><p id="2aba9ca9-e2ba-8190-919c-fc7a5753cdde" class="block-color-orange_background"><strong>Şube</strong></p><ul id="2aba9ca9-e2ba-8100-88c0-f5188306d9a1" class="bulleted-list"><li style="list-style-type:disc">Şubeye delege edilen aktiviteyi uygun hekim/hekimlere danışır.</li></ul><ul id="2aba9ca9-e2ba-8109-83ed-e9b6df428a0e" class="bulleted-list"><li style="list-style-type:disc">Hekimden gelen yanıta göre eğer fiyatlanabilir bir tedavi planı önerildiyse hazır fiyatlardan fiyatlandırmasını yapar/süreci SmartPricing e aktarır.</li></ul><ul id="2aba9ca9-e2ba-818f-8dc4-fb83b87cfb21" class="bulleted-list"><li style="list-style-type:disc">Hekim değerlendirmesi, tedavi planı oluşturmaya uygun değilse gelen yanıta göre aktiviteyi Merkez/ofis yetkilisinin bilgisine sunacak şekilde günceller.</li></ul><ul id="2aba9ca9-e2ba-81d5-bde4-e227f6294aa5" class="bulleted-list"><li style="list-style-type:disc">Hekimin değerlendirmesi ve buna istinaden hesaplanan olası fiyat ile (yada direkt fiyat sorulan bir işlem için), önerilen tedavi, buna dair ekstra detaylar, yatış süresi ve fiyat bilgisi ile tedavi planı olarak ekler.</li></ul><ul id="2aba9ca9-e2ba-8164-9b04-c5fc798f192d" class="bulleted-list"><li style="list-style-type:disc">Gelen randevu taleplerini, talebe ve hekimin uygunluğuna göre organize eder. </li></ul><ul id="2aba9ca9-e2ba-8174-bd4e-c67329d2b889" class="bulleted-list"><li style="list-style-type:disc">Randevusuna gelen hastanın tedavisine başlamasıyla taburculuğuna kadar statüsünü günceller.</li></ul></div></div><p id="2aba9ca9-e2ba-8057-8428-d7b185688665" class="">* <em><strong>bu dokümantasyon boyunca açıklanan adımlarda, sürecin sorumluluğunun kimde olduğunun ayırt edilebilmesi için başlıklar, Merkez/Ofis ise </strong></em><em><mark class="highlight-purple_background"><strong>Mor</strong></mark></em><em><strong>; Saha ise </strong></em><em><mark class="highlight-orange_background"><strong>Turuncu</strong></mark></em><em><strong> olarak renklendirilmiştir. </strong></em></p><h1 id="2aba9ca9-e2ba-812a-b1eb-fe2694930f23" class="">Hasta ve Aktivite Kavramları</h1><h2 id="2aba9ca9-e2ba-819a-a61d-ea83902396a7" class="">Hasta ile aktivite farkı </h2><p id="2aba9ca9-e2ba-8154-b8ff-eedfef10acd2" class="">Hasta(müşteri), PRM süreçlerinde tekil kişiyi temsil eder. Aktivite ise bir hastaya dair PRM’in takibine konu olabilecek aksiyonları ifade eder. Bu iki unsur arasında birden-çok a bir ilişki (1-to-n) vardır. Yani bir hastanın birden fazla aktivitesi olabilir, ancak bir aktivite sadece bir hastayla ilişkilidir. </p><p id="2aba9ca9-e2ba-8139-8fde-c39a86317e4f" class="">Aktiviteler oluşturulduğunda <strong>BEKLİYOR </strong>statüsünde yaratılır ve bir aktivitenin tamamlanmış kabul edilebilmesi için statüsünün <strong>KAPATILDI </strong>veya<strong> TABURCU </strong>olması gerekmektedir. (terminal statüler) Eğer aktivite, bu iki statü dışında ise aktiviteye dair süre çalışmaya devam etmektedir. Terminal statüye ulaşan aktivite resmi olarak tamamlanmış kabul edilir ve bu aktivite üzerinde herhangi bir işlem yapılmasına izin verilmez, yapılan değişiklikler de gözlem dışıdır.</p><h2 id="2aba9ca9-e2ba-81c7-879f-eb4f7eb15642" class="">Hangi durumlarda yeni aktivite açılır, hangi durumlarda açılmaz?</h2><h3 id="2aba9ca9-e2ba-804e-8472-c0a5860ee9e1" class="">Yeni aktivite açılması gereken durumlar</h3><ul id="2aba9ca9-e2ba-8088-9dbe-c7951d82896f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal_background"><strong>Medikal değerlendirme</strong></mark><strong> </strong>Kurumumuzda tedavi almak isteyen yeni yada daha önceden bir hastanemizde hizmet almış hastaların mevcutta bulunan raporları ışığında olası bir tedavi planı sunmak ve sonrası süreçlerini takip etmek için;</li></ul><ul id="2aba9ca9-e2ba-813f-8e2f-e77e6836e89f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal_background"><strong>Direkt fiyat verme</strong></mark><strong> </strong>Kurumumuzda verilen herhangi bir hizmet için direkt fiyat talebi olduğunda;<figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-81e8-8b28-d7b8ba9b906c"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-806e-8d7a-d973877cfff5" class="">Direkt fiyat talepleri, mümkün olduğunca operasyonlar ve tedaviler için tercih edilmemeli; muayene, check-up, görüntüleme gibi fiyatların görece sabit olarak kullanıldığı fiyatlandırmaları kapsamalıdır.</p></div></figure><p id="2aba9ca9-e2ba-8149-9c8d-e5777ad2f60a" class="">
+</p></li></ul><ul id="2aba9ca9-e2ba-812e-a4ae-c9b9c3b40690" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal_background"><strong>Direkt randevu talep edildiğinde</strong></mark><strong> </strong>Potansiyel hastanın herhangi bir medikal değerlendirme sürecine girmeden fiziki yada online randevu talebini karşılamak için;<figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-8111-a2f8-d5e9d61e2bbf"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-806e-84c2-f6c9d00a37d1" class="">Eğer bir hasta, uzun süreli bir tedavi alıyorsa (onkoloji tedavileri gibi) ve tedavinin aşamaları bir ayı aşkın periyotlarda ise, bu hastanın her gelişinde yeni bir aktivite açılır ve bu sürecin ileriki aşamaları direkt randevu talebiyle başlar. </p></div></figure></li></ul><ul id="2aba9ca9-e2ba-81f8-a978-d2b8fd549c6f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal_background"><strong>Kontrol değerlendirmesi </strong></mark>Hastanelerimizde daha önceden tedavi almış ve bu tedavisine bağlı olarak rutin görüntülemeleri/raporları üzerinden uzaktan kontrol değerlendirmesi yada aldığı tedavi sonrası ülkesinde yaşanabilecek komplikasyonu/şikayeti hekimine danışmak gerektiğinde</li></ul><h3 id="2aca9ca9-e2ba-80f5-8943-e32d0e25f4bf" class="">Hangi durumlarda aktivite oluşturulmamalıdır?</h3><ul id="2aba9ca9-e2ba-8174-92de-c160db5aacb9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red_background"><strong>Yazılı Belge Talebi</strong></mark><strong> </strong>Kurumumuzda daha önce hizmet alan hastanın, tedavisiyle ilişkili olabilecek rapor, resmi yazı, görüntü taleplerinde;</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-8196-a453-d990ddc3dcd5"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-81fd-87a2-d690ff660087" class="">Tedavi almış hastaların bilgilerinin paylaşılması konusu mahremiyet açısından büyük risk barındırdığından PRM süreçlerinden bağımsız bu paylaşımlarda azami dikkat ve mümkün olduğunca hastanın kendi verilerine erişebildiği yapılara (Acıbadem Online) yönlendirilmesi daha uygun bir yöntemdir.</p></div></figure><ul id="2aba9ca9-e2ba-81ce-84e9-ee7b96271356" class="bulleted-list"><li style="list-style-type:disc"><strong> </strong><mark class="highlight-red_background"><strong>Çeviri Talebi</strong></mark><strong> </strong>Tedavisi tamamlanmış yada tamamlanmaya yakın hastaların Türkçe üretilmiş raporlarının başka dile çeviri talepleri için;</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-8117-a745-fe27f6c7a648"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-81ce-964c-c5564c9964e4" class="">Çeviri talepleri için Cerebral den ilgili rapordan Çeviri talebi oluşturabilirsiniz.</p></div></figure><p id="2aba9ca9-e2ba-8183-b0dd-e4f11044624f" class="">Yeni bir aktivite<span style="border-bottom:0.05em solid"> </span><strong><span style="border-bottom:0.05em solid">oluşturulmaz</span></strong><span style="border-bottom:0.05em solid">.</span></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-8117-808d-fcffb84a0f7e"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-81f6-9ca8-e6be6e1a11c2" class=""><mark class="highlight-red_background"><strong>Daha önce Medikal Değerlendirmesi alınmış aktivitelerde</strong></mark>, hastadan randevu talebi geldiğinde ilgili aktiviteyi bulup süreci devam ettirmek gerekmektedir. Yeni bir aktivite açarak randevu talebi <span style="border-bottom:0.05em solid">yapılmaması</span> gerekmektedir. </p></div></figure><h2 id="2aba9ca9-e2ba-81fb-9983-c0f1da021b4c" class="">Aktivitenin İlerlemesi ve Sonlandırılması</h2><p id="2aba9ca9-e2ba-8114-b910-f80eee7b0523" class="">Aktiviteler, fonksiyonlarına göre mevcut statülerin gruplanarak takip edildiği <strong>fazlardan</strong>; bu fazların detaylandığı ana akışı belirleyen <strong>ana statülerden</strong>; doğal akıştan farklı süreçlerin dahil olduğunda detaylandırıldığı<strong> alt statüler</strong> çizgisinde ilerler. </p><p id="2aba9ca9-e2ba-817a-a985-fe406adf1880" class="">Örneklendirmek gerekirse, Medikal Değerlendirme fazı, <strong>BEKLİYOR&gt;HEKİM DEĞERLENDİRMESİ&gt;FİYAT ÇALIŞMASI&gt;TEKLİF AŞAMASINDA&gt;GERİ DÖNÜŞ BEKLENİYOR </strong>akışında ilerler. Bahsi geçen statüler, bu fazın ana statüleridir. Hastanın Hekim Değerlendirmesi esnasında hekimden gelen bilgiye göre (mesela rapor yetersiz, yada başka hekim tarafından değerlendirilmesi geri bildirimi) hastadan ekstra bir rapor talebimiz olacaksa bu durumda statüyü <strong>GOZDEN GECIR(REVIEW REQUEST)</strong> olarak güncelleriz, bu da bu ana statünün altındaki alt statümüz olur.</p><figure id="2aba9ca9-e2ba-81bc-8f49-cf704c489b3b" class="image"><a href="image.png"><img style="width:682px" src="image.png"/></a></figure><p id="2aba9ca9-e2ba-8186-8373-c3de341f8d0f" class="">Yukarıdaki akışta da görüleceği üzere, aktiviteler ana statüler bazında <strong>(BEKLİYOR&gt;HEKİM DEĞERLENDİRMESİ&gt;FİYAT ÇALIŞMASI&gt;TEKLİF AŞAMASINDA&gt;GERİ DÖNÜŞ BEKLENİYOR&gt;&gt;) </strong>tek yöne ilerlemektedir ve geriye adım atılmamaktadır. Paydaşların performanslarını ölçmede bu aşamalar arası geçen süre ve akıştaki içeriğin kalitesi temel alınarak metrikler belirlenecektir. </p><p id="2aba9ca9-e2ba-810b-b741-d058faf0c892" class="">Aktiviteler ancak ve ancak <strong>KAPATILDI</strong> veya <strong>TABURCU</strong> statüsüyle tamamlanmış sayılır. Dolayısıyla, süreçteki aktörler kendi sorumluluklarında yer alan görevleri yerine getirdikçe sürecin ilerlemesi adına statü güncellemelerini yapmakla yükümlüdür. </p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-81d1-b7b1-d43874f6a688"><div style="font-size:1.5em"><span class="icon">⛔</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-81c1-b0ef-d9d1520967fc" class="">Hasta, daha önce kurumumuzda tedavi almışsa (kayıtlarımızda profili mevcutsa), yapılan aramanın neticesinde hastayı seçip yeni aktivite açılması gerekmektedir. hastanın eskiden yarım kalan aktivitelerinin güncellenmesi, çok eski tarihlere dayanan bir aktiviteyi tekrar canlandırmak anlamına gelecektir, bu da toplam yanıt süresini olumsuz etkileyecektir.</p></div></figure><h1 id="2aba9ca9-e2ba-81a2-abbe-ece2fb007550" class="">Adım Adım Yeni Aktivite Oluşturma</h1><figure id="2aba9ca9-e2ba-8186-a25a-d1b9cb7e400b" class="image"><a href="image%201.png"><img style="width:393.984375px" src="image%201.png"/></a></figure><h2 id="2aba9ca9-e2ba-81e2-8f30-cb588f6f0f3f" class="">Hasta Arama</h2><figure id="2aba9ca9-e2ba-8145-8517-c821d41064d2" class="image"><a href="1.png"><img style="width:709.96875px" src="1.png"/></a></figure><p id="2aba9ca9-e2ba-812a-a84d-ea4df80acf42" class="">Yeni aktivite oluşturmadan önce ilk yapılması gereken söz konusu hastanın kurumumuzdan daha önce hizmet alıp almadığını kontrol etmektir. </p><p id="2aba9ca9-e2ba-81fc-a2ce-e6eda0a71ead" class="">Yukarıdaki görselde (<em>Resim 1)</em> görüleceği gibi, <strong>Yeni Müşteri</strong> butonuna basarak (1) hastayı Ad-Soyad veya PRM numarası veya Protokol numarası(2) bilgileriyle arayıp, ardından Search butonuna basarak(3) hali hazırda bu hastaya dair kaydın olup olmadığı kontrol edilir.</p><h3 id="2aba9ca9-e2ba-8171-b07b-c6ed2329a5a8" class=""><strong>Yeni hasta kaydı oluşturma (Arama sonucu kayıt çıkmadığında)</strong></h3><figure id="2aba9ca9-e2ba-81d5-8446-e2a152ddab63" class="image"><a href="11.png"><img style="width:720px" src="11.png"/></a></figure><ul id="2aba9ca9-e2ba-8121-a710-f5a4d4f2c424" class="bulleted-list"><li style="list-style-type:disc">Yapılan aramada herhangi bir kayıt bulunmazsa veya bulunan kayıt hastanın bilgileriyle eşleşmiyorsa (aynı kişi değilse), <strong>Yeni Müşteri</strong> butonuna basarak yeni kayıt oluşturulmalıdır. (<em>Resim 2)</em><figure id="2aba9ca9-e2ba-8146-85e3-e43413909d87" class="image"><a href="2.2.png"><img style="width:768px" src="2.2.png"/></a></figure><p id="2aba9ca9-e2ba-8176-a74b-df55e8d5628a" class="">Hastanın isim (1) soy isim (2), cinsiyet (3) doğum tarihi (gün, ay, yıl) (4), e_posta (5), telefon tipi (6) ve telefon (7) bilgileri girildikten sonra <span style="border-bottom:0.05em solid">Kaydet ve Yeni Aktivite Oluştur (8) </span>butonuna basıyoruz.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-81ac-93eb-ebb5f034f8e4"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-816b-9505-ee3bbfce7621" class="">Hastanın adı, soyadı, cinsiyeti ve doğum tarihi mutlaka doğru girilmelidir. doğum tarihi tam olarak bilinmiyorsa (yıl bilgisi varsa) 01.01.xxxx şeklinde giriş yapılır.</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-81c1-87f6-f7664f96ba5b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-8166-964a-f3da601c4d2d" class="">Hastanın iletişim bilgileri, referans hastalarında elde edilemeyebilir. Bu durumda iletişim bilgileri alanlarına jenerik girişler yapılabilir. Ancak referansı olmayan bireysel hastalar için <span style="border-bottom:0.05em solid">mutlaka</span> bu bilgilerin girilmesi gerekmektedir. </p></div></figure></li></ul><h3 id="2aba9ca9-e2ba-810b-834b-e1f4b9ae6948" class=""><strong>Mevcut hastada aktivite kaydı oluşturma</strong></h3><ul id="2aba9ca9-e2ba-8149-9fe7-c075ea571a4a" class="bulleted-list"><li style="list-style-type:disc">Yapılan arama neticesinde ad, soyad ve doğum tarihinde eşleşme olduğunda, bu hasta profili üzerinden yeni aktivite oluşturulur. (<em>Resim 4)</em></li></ul><figure id="2aba9ca9-e2ba-8105-bff7-c5976f014c80" class="image"><a href="3.png"><img style="width:653.96875px" src="3.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-813a-b2f5-e7bc0dbe0c49"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-815f-9aef-fcbebd8527d7" class="">Kontrol değerlendirilmesi alınacak vakalarda, aramayı hastanın protokolü üzerinden yapmak, daha kesin sonuca ulaştıracaktır. <em>(Resim 5)</em></p><figure id="2aba9ca9-e2ba-815b-b66b-ca70db9efbcc" class="image"><a href="3.1.png"><img style="width:768px" src="3.1.png"/></a></figure></div></figure><h2 id="2aba9ca9-e2ba-8197-8ace-f6c35c3b9e63" class="">Aktivite Oluşturma</h2><p id="2aba9ca9-e2ba-81a7-9318-d3e7556ade06" class="">Hastayı oluşturup (yada mevcudu bulup) yeni aktivite butonuna basıldığında <strong>Yeni Aktivite </strong>formu ekrana gelir. (<em>Resim 6)</em></p><figure id="2aba9ca9-e2ba-815b-b921-e55d9e4a8c7b" class="image"><a href="4.1.png"><img style="width:720px" src="4.1.png"/></a></figure><p id="2aba9ca9-e2ba-814a-aa06-efa8b001d455" class="">Hastanın adı, soyadı, PRM numarası, Doğum Tarihi ve iletişim bilgileri bu formun sol üst kısmında yer alır. Üst orta kısımda yer alan Dropdown menüde hastanın daha önce var olan aktiviteleri listelenir. </p><p id="2aba9ca9-e2ba-8180-8c84-f1bc6b86eef2" class="">Yeni aktivitenin kaydının oluşturulabilmesi için;<div class="indented"><p id="2aba9ca9-e2ba-8108-b199-c69c162b160e" class=""><strong>BİRİNCİ ADIM </strong></p><ul id="2aba9ca9-e2ba-8120-8f9e-cb6b8ce605fc" class="bulleted-list"><li style="list-style-type:disc">Bölge (1)</li></ul><ul id="2aba9ca9-e2ba-810a-95ae-f46e26d31b59" class="bulleted-list"><li style="list-style-type:disc">Ülke (2)</li></ul><ul id="2aba9ca9-e2ba-81e8-a005-f9891e46412d" class="bulleted-list"><li style="list-style-type:disc">Geliş Kanalı (3)</li></ul><ul id="2aba9ca9-e2ba-816e-b00e-e3c718d59a24" class="bulleted-list"><li style="list-style-type:disc">Referans (4)</li></ul><ul id="2aba9ca9-e2ba-81e4-8ae0-f1ef22674dec" class="bulleted-list"><li style="list-style-type:disc">Merkez Yetkili (6)</li></ul><ul id="2aba9ca9-e2ba-8172-be34-c19b071654a7" class="bulleted-list"><li style="list-style-type:disc">Hizmet (7)</li></ul><ul id="2aba9ca9-e2ba-81c6-8c47-cad3be5cab85" class="bulleted-list"><li style="list-style-type:disc">Şikayet (10) </li></ul><p id="2aba9ca9-e2ba-81c8-881b-c1429b9f5de2" class="">alanları doldurulur ve <strong>Kaydet </strong>butonuna basılarak yeni aktivite kaydı oluşturulur.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-81bf-b40c-fccac88b3510"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-8118-ad7d-ed7bd4348fae" class="">Mevcut hasta üzerinden yeni aktivite oluşturulduğunda, hatırlatma kolaylığı açısından hastanın son aktivitesinin Geliş Kanalı ve Referans bilgileri (eğer Merkez Yetkili hala kurumumuzda görev alıyorsa Merkez Yetkilisi bilgisi de) yeni aktivitede görünür olur. Aktiviteyi kaydetmeden önce <span style="border-bottom:0.05em solid">mutlaka</span> bu bilgilerin doğruluğundan emin olmanız gerekmektedir.</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-814a-b4a5-db74b512a307"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-817f-9233-d96d0f14ebe2" class="">Hizmet alanında tedavi ünitesi olarak en fazla üç servis seçebilirsiniz.</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-816e-b67f-d06dc5d13c53"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-81a5-9c78-cd4c4db5ec77" class="">Aktiviteyi kaydettiğinizde üst orta kısımda yer alan dropdown menu de sizin oluşturduğunuz aktiviteye ait Aktivite Numarası, Aktivitenin Açılış Tarihi, Ülkesi, Referansı ve statü bilgisinin yer aldığı satırı göreceksiniz. Bunu göremediğinizde, aktivite henüz oluşturulmadığı; dolayısıyla sonraki aşamalara geçemeyeceğiniz anlamına gelir. </p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-8150-b784-e35bb9b2d4a7"><div style="font-size:1.5em"><span class="icon">⛔</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-81e7-bb78-ea8b7f816035" class="">Aktivitenin statülerini güncellerken Genel Bilgiler sekmesindeki <strong>Kaydet </strong>butonunu kullanmamalısınız. bu buton sadece aktivitenin kaydedilmesinde aktiftir.</p></div></figure></div></p><p id="2aca9ca9-e2ba-809c-b859-fa151e9cccd8" class="">
+</p><p id="2aba9ca9-e2ba-81fc-b78f-fb4779d0fe79" class=""><strong>İKİNCİ ADIM</strong></p><p id="2aba9ca9-e2ba-81df-9a54-ec39225134eb" class="">Aktivite kaydının oluşturulmasının ardından hastanın iletmiş olduğu dosyaların yüklenmesi aşaması gelir. </p><figure id="2aba9ca9-e2ba-81a3-9422-fe5790f5bf46" class="image"><a href="Dosya.png"><img style="width:653.984375px" src="Dosya.png"/></a></figure><p id="2aba9ca9-e2ba-8153-aed8-fae09f7850fc" class="">
+</p><p id="2aba9ca9-e2ba-8186-82bc-e114ab525cfe" class="">Hastanın ilettiği dosyalar <strong>Share’a Gönder </strong>butonuna basılarak sırasıyla yüklenir ve her yüklenen dosya için linkteki dosyanın ne olduğuna dair isimlendirme yapılır. </p><p id="2aba9ca9-e2ba-81fb-9591-e9d953604a4a" class="">Dosya yüklemeyle alakalı detaylı bilgilendirme için XXXXXXXXX</p><h1 id="2aba9ca9-e2ba-8194-8885-d4fcd00988f3" class="">Medikal Değerlendirme/Yanıt (Faz 1)</h1><figure id="2aba9ca9-e2ba-81a2-b2da-e49644217653" class="image"><a href="image%202.png"><img style="width:709.984375px" src="image%202.png"/></a></figure><p id="2aba9ca9-e2ba-81d2-b38a-f1f2dbd7d58f" class="">Aktiviteler, sürecin belli başlı dönüm noktalarını dikkate alınarak fazlara ayrıldı. Birinci faz, hastanın danıştığı günden, merkez/ofis yetkililerinin hastaya yanıt vermesiyle son bulur. </p><p id="2aba9ca9-e2ba-8116-9560-c3959a1e4f25" class="">Aktivite kaydının tamamlanıp, hastaya dair dosyaları yükledikten sonra aşağıdaki adımlar sırasıyla izlenir.</p><h2 id="2aca9ca9-e2ba-80e5-a14a-d3d2a6a1455b" class=""><mark class="highlight-default"><mark class="highlight-purple_background">Aktiviteyi Şubeye Atama</mark></mark></h2><figure id="2aba9ca9-e2ba-81a3-a625-eff1c8c493b7" class="image"><a href="Ekran_Alnts.png"><img style="width:720px" src="Ekran_Alnts.png"/></a></figure><ul id="2aba9ca9-e2ba-81cc-8bbe-d614513f2937" class="bulleted-list"><li style="list-style-type:disc">Değerlendirme sekmesinde yer alan şube (1) ve saha yetkilisi (2) seçildikten seçilir.</li></ul><ul id="2aba9ca9-e2ba-81b4-aa5f-d79b04ae99b9" class="bulleted-list"><li style="list-style-type:disc">Statü (3) Hekim değerlendirmesi olarak seçilir ve <strong>Değerlendirme Kaydet </strong>butonuna basılarak kaydedilir. (4).</li></ul><p id="2aca9ca9-e2ba-8094-b419-ca79ff22c99b" class="">
+</p><h2 id="2aba9ca9-e2ba-8177-9a28-cc8232c43f70" class=""><mark class="highlight-orange_background">Hekim Ekleme</mark></h2><figure id="2aba9ca9-e2ba-812e-8e98-d5bbb845b4ff" class="image"><a href="image%203.png"><img style="width:681.96875px" src="image%203.png"/></a></figure><p id="2aba9ca9-e2ba-8101-a684-fde60733e35f" class="">Şube seçimi yapıldıktan sonra <strong>Hekim Ekle </strong>seçilerek Hekim Düzenle ekranına geçilir. </p><ul id="2aba9ca9-e2ba-816d-9d73-d6412699b06f" class="bulleted-list"><li style="list-style-type:disc">Aktivitenin atandığı şube özelinde, o şubede hizmet verilen servisler ve bu alandaki hekimlerin listelendiği küçük bir sayfa açılır. (<em>Resim 10)</em></li></ul><figure id="2aba9ca9-e2ba-8158-abe7-d6d432df696b" class="image"><a href="09.1.png"><img style="width:576px" src="09.1.png"/></a></figure><ul id="2aba9ca9-e2ba-807d-a354-eb771f8d8d46" class="bulleted-list"><li style="list-style-type:disc">Hekim eklemek için değerlendirme sekmesinden hekim ekle butonuna basarak şube(1), hizmet (2) ve Doktor (3) girip kaydediyoruz (4). </li></ul><figure id="2aba9ca9-e2ba-80ad-8931-e2f841e38c41" class="image"><a href="09.png"><img style="width:710px" src="09.png"/></a></figure><ul id="2aba9ca9-e2ba-801e-9e4e-fd1dec78a6e0" class="bulleted-list"><li style="list-style-type:disc">Hekim eklendikten sonra aktivite formunun <strong>Eklenen Hekimler </strong>tablosuna Hekim Değerlendirme süreci açısından <strong>Aktif </strong>olarak eklenir.</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-8059-8a4f-d27cdb6d1179"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-801b-959f-fd835c3ad749" class="">Hekim Ekleme fonksiyonu <strong>sadece</strong> Hekim Değerlendirmesi statüsünde kullanılmaktadır. </p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-8007-a02e-c1cf000659ce"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-808d-8fdf-edbc1f504a28" class="">Bir aktivite, birden çok hekime danışılabilir (birden çok a ilişki). Tıpkı Hasta-Aktivite arasındaki ilişkide olduğu gibi, bir aktivitenin birden fazla Hekim Değerlendirmesi bulunabilir.</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-80df-85c3-f3ca3425206e"><div style="font-size:1.5em"><span class="icon">⛔</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-80bd-a3fb-cdffb688dfbe" class="">UHM Doktorunun olduğu şubelerde <strong>Hekim Ekle </strong>butonu merkez/ofis kullanıcılarına deaktiftir. bu şubelerde hekimlerin seçilmesi yetkisi bu hekimlerimizde olacaktır. Özellikle talep edilen bir hekim söz konusu ise bunu Yorum kısmından belirtebilirsiniz.</p></div></figure><h2 id="2aba9ca9-e2ba-8061-8a94-e677ed1990c6" class=""><mark class="highlight-orange_background">Hekime Danışma ve Gelen Yanıtın Sisteme Alınması</mark></h2><p id="2aba9ca9-e2ba-8053-808a-f9f5843f28c4" class="">Vakanın tıbbi bilgileriyle hekime iletilmesi, eğer birden fazla hekim değerlendirmesinin aynı anda alınması söz konusu ise (multidisipliner vakalarda) burada hekimler arası bilginin aktarılmasında koordinasyon sağlanması, Hekimin verdiği yanıtın PRM sistemine kaydı adımları Saha yetkililerinin sorumluluğundadır. </p><p id="2aba9ca9-e2ba-803f-979b-ef336d72d01b" class="">Hekime vakanın iletilmesinde, çalışma modeline bağlı olarak birden fazla seçenek vardır. Hekime vaka, 3. parti iletişim araçlarıyla (whatsapp, telegram vs gibi) gönderilebileceği gibi PRM sistemi üzerinden de mail olarak iletilebilir.</p><h3 id="2aba9ca9-e2ba-80f5-9b39-da1f79ee4c03" class=""><mark class="highlight-orange_background">Hekime Mail Gönder</mark></h3><figure id="2aba9ca9-e2ba-8060-8fd1-dde6b6889edb" class="image"><a href="1%201.png"><img style="width:624px" src="1%201.png"/></a></figure><ul id="2aba9ca9-e2ba-80f2-83fc-c41517285bde" class="bulleted-list"><li style="list-style-type:disc">Hekime vakayı iletmek istediğimizde, ilgili hekimin satırındaki radyo buton seçilir (1), ardından <strong>Hekime Mail Gönder </strong>butonuyla (2) şablonu açılır. (<em>Resim 12)</em></li></ul><figure id="2aba9ca9-e2ba-8027-8ffc-f2c91f818f80" class="image"><a href="1.1..png"><img style="width:816px" src="1.1..png"/></a></figure><ul id="2aba9ca9-e2ba-804e-b579-cedda5344d33" class="bulleted-list"><li style="list-style-type:disc">Bu şablonda bazı veriler aktivitenin ilgili alanlarından otomatik olarak alınır. (<em>Resim 13)</em><ul id="2aba9ca9-e2ba-8084-b70e-f3ade211c6d4" class="bulleted-list"><li style="list-style-type:circle">Hekimin Acıbadem uzantılı e-postası</li></ul><ul id="2aba9ca9-e2ba-801b-be6b-f1ff500b27af" class="bulleted-list"><li style="list-style-type:circle">Hastanın adı</li></ul><ul id="2aba9ca9-e2ba-802c-891f-f68823a4f2de" class="bulleted-list"><li style="list-style-type:circle">Hastanın Soyadı</li></ul><ul id="2aba9ca9-e2ba-80fe-934f-f9db3830c6ab" class="bulleted-list"><li style="list-style-type:circle">Hastanın Doğum Tarihi</li></ul><ul id="2aba9ca9-e2ba-80e0-8e33-e1cfc7ab8f22" class="bulleted-list"><li style="list-style-type:circle">Hastanın Cinsiyeti</li></ul><ul id="2aba9ca9-e2ba-801c-bcf0-d72f4c1cf7d9" class="bulleted-list"><li style="list-style-type:circle">Şikayet</li></ul><ul id="2aba9ca9-e2ba-807d-bebc-e20d379f1be8" class="bulleted-list"><li style="list-style-type:circle">Eklenen Dosyalar</li></ul></li></ul><ul id="2aba9ca9-e2ba-8007-a443-fd6eb7c20b3a" class="bulleted-list"><li style="list-style-type:disc">Hekim eğer acıbadem uzantılı mailini kullanmıyorsa yada asistanı üzerinden iletişim kuruluyorsa CC alanına kullandığı mail adresi yazılabilir (1)</li></ul><ul id="2aba9ca9-e2ba-806d-ab5e-f6929cad0d8d" class="bulleted-list"><li style="list-style-type:disc">Forma otomatik gelen veriler dışında hekim ile paylaşılması gereken başka bilgiler varsa, bu durumda <strong>EK TIBBİ BİLGİ </strong>alanı kullanılır (2)</li></ul><ul id="2aba9ca9-e2ba-803e-a720-cef9502d61ff" class="bulleted-list"><li style="list-style-type:disc">Bilgiler girildikten sonra <strong>E POSTA GÖNDER </strong>butonuyla hekime mail olarak iletilir. Bu mail sistem tarafından otomatik oluşturulur ve ilgili şubenin UHM mail grubu adına gönderilir. Hekim bu maili yanıtladığında bu mail grubuna cevap gelmiş olur.</li></ul><h3 id="2aba9ca9-e2ba-80f5-a80e-ce919588a1e3" class=""><mark class="highlight-orange_background">Hekimin Yanıtının Sisteme Girilmesi</mark></h3><p id="2aba9ca9-e2ba-8051-98a1-df6e643a030d" class="">Hekimden gelen yanıt hangi yolla gelmiş olursa olsun, sisteme aşağıdaki yönergeye göre girilir.</p><ul id="2aba9ca9-e2ba-80cf-99b2-dc062898e353" class="bulleted-list"><li style="list-style-type:disc">Cevap veren hekime ait <strong>AKTİF </strong>durumda olan Eklenen Hekimler satırı seçilir. bu seçimle beraber görüşün girileceği form açılır.<figure id="2aba9ca9-e2ba-80cb-adfa-d6030b580bfc" class="image"><a href="image%204.png"><img style="width:633.984375px" src="image%204.png"/></a></figure></li></ul><ul id="2aba9ca9-e2ba-8035-9018-f038f244ff6e" class="bulleted-list"><li style="list-style-type:disc">Hekimden gelen yanıt fiyatlanabilir bir tedavi planı öngörüyorsa Statü <strong>Tamamlandı </strong>seçilir. açılan yeni alana hekimin görüşü aktarıldığı biçimde kopyalanır ve kaydedilir.<figure id="2aba9ca9-e2ba-80d8-be20-c8dca9f28cc3" class="image"><a href="image%205.png"><img style="width:605.953125px" src="image%205.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-8016-9367-ca4d515a4dab"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-8010-b961-f1587fbaaefd" class="">Hekim görüşü kaydedildikten sonra değiştirilmesi mümkün değildir.</p></div></figure><p id="2aba9ca9-e2ba-8059-8cac-d920998afdce" class="">
+</p></li></ul><p id="2aba9ca9-e2ba-8072-81da-c2246459fd52" class=""><strong>Hekimin yanıtı tedavi planı oluşturmaya </strong><strong><span style="border-bottom:0.05em solid">elverişli</span></strong><strong> değilse;</strong><div class="indented"><p id="2aba9ca9-e2ba-808b-a209-c7eaf0f1d564" class="">Hekim, danışılan vakaya tedavi planı önerebilmek için ekstra bilgiye ihtiyaç duyabilir; vaka onun alanına girmiyordur yada tedavi önerilemeyecek bir vaka olabilir. Bu durumda aşağıdaki adımları izliyoruz. </p><ul id="2aba9ca9-e2ba-80f7-9694-c1da7d99ac29" class="bulleted-list"><li style="list-style-type:disc">İlgili hekimin <strong>AKTİF</strong> teki satırı seçilir.</li></ul><ul id="2aba9ca9-e2ba-80a9-b4ee-d1fb52a8eaac" class="bulleted-list"><li style="list-style-type:disc">Açılan formdan STATÜ <strong>Olumsuz</strong> seçilerek açılan alandan sebep belirlenir. </li></ul><figure id="2aba9ca9-e2ba-80f1-b0d7-c73b0b84bcb4" class="image"><a href="image%206.png"><img style="width:609.96875px" src="image%206.png"/></a></figure><ul id="2aba9ca9-e2ba-8069-823c-d851bb0dd3e5" class="bulleted-list"><li style="list-style-type:disc">Hekim görüşü girilen alana da, hekimin verdiği yanıta istinaden eksik rapor, yada ilgili branş bilgisi varsa onu ekleyerek kaydedilir. (<em>Resim 15)</em></li></ul><figure id="2aba9ca9-e2ba-808f-9f4e-d30729855499" class="image"><a href="3.1%201.png"><img style="width:720px" src="3.1%201.png"/></a></figure><ul id="2aba9ca9-e2ba-8058-9434-fb8c611010f9" class="bulleted-list"><li style="list-style-type:disc"><strong>OLUMSUZ</strong> statüsüyle kapatılan değerlendirmeler için aşağıdaki seçenekler tanımlanmıştır.<ul id="2aba9ca9-e2ba-80e5-b7d4-cb97368a9d4b" class="bulleted-list"><li style="list-style-type:circle"><strong>Hatalı Hekim Seçimi</strong> Bu seçenek Merkez/Ofis tarafından yanlış hekimi yapılmış; yada sehven saha yetkililerince yanlış seçilmiş değerlendirmelerde kullanılır. </li></ul><ul id="2aba9ca9-e2ba-80ab-9378-dd689afcb943" class="bulleted-list"><li style="list-style-type:circle"><strong>Cevap Alınamadı</strong> Danışılan hekimden yanıt alınamadığında sürecin devam ettirmek adına değerlendirme sürecini sonlandırmak için kullanılır. </li></ul><ul id="2aba9ca9-e2ba-80c5-8a13-d4c510994f27" class="bulleted-list"><li style="list-style-type:circle"><strong>İzinli/Uygun Değil</strong> Danışılan hekim Kongre de yada izinli olduğu takdirde ve değerlendirmenin makul süre içerisinde bitirilemeyeceği öngörüldüğünde bu seçenekle beraber süreç sonlandırılır. </li></ul><ul id="2aba9ca9-e2ba-809c-9f16-c832ed3f6707" class="bulleted-list"><li style="list-style-type:circle"><strong>Başka Hekime Refere</strong> Hekimin yanıtına istinaden refere edilen hekim/branş değerlendirmesine başlamadan önce aktifteki değerlendirme bu seçenek ile beraber kapatılır. </li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-8084-a804-d80b16a7ff7a"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-809a-a92f-d86ddd747e89" class="">Hekimin ismini verdiği branş yada hekim aktif şubede yer alıyorsa sürecin statüsü değiştirilmeden <strong>(HEKİM DEĞERLENDİRİLMESİ)</strong> yeni hekim eklenerek devam edilir. Eğer farklı şubede çalışıyorsa yada kurumumuzda görev almayan bir hekim ise değerlendirme, bu seçenek ile <strong>OLUMSUZ</strong> sonlandırıldıktan sonra aktivite statüsü <strong>GÖZDEN GEÇİR(REVIEW REQUEST)</strong> olarak güncellenir. </p></div></figure><ul id="2aba9ca9-e2ba-8001-b34d-c42e286079ae" class="bulleted-list"><li style="list-style-type:circle"><strong>Yetersiz Rapor</strong> Hekim gelen bilgi ve raporları yetersiz bulduğunu ifade ettiyse değerlendirme süreci bu seçenek ile sonuçlandırılır. </li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aba9ca9-e2ba-8024-9776-d66290c61815"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aba9ca9-e2ba-80f5-b83b-fdbbef3cf920" class="">Bu seçenek ile sonlandırılan değerlendirmelerde <span style="border-bottom:0.05em solid">mutlaka</span> talep edilen rapor ve görüntüler <strong>Hekim Görüşü </strong>alanına yazılmalıdır.</p></div></figure><ul id="2aba9ca9-e2ba-8016-980e-f3687c2069df" class="bulleted-list"><li style="list-style-type:circle"><strong>Tedavi Önerilmedi</strong> Hastaya gönderilen bilgi ve belgeler ışığında tedavi edilemeyeceği yönünde bir görüş geldiğinde süreç bu seçenek ile sonuçlandırılır. </li></ul></li></ul><h3 id="2aba9ca9-e2ba-80ec-ab44-e499d9ad6e6b" class=""><mark class="highlight-orange_background">Hekim Değerlendirmesi sürecinin tamamlanması</mark></h3><p id="2aba9ca9-e2ba-8020-a0ba-f7932740e104" class="">Hekimden gelen yanıt yada yanıtlar olumlu olumsuz tamamlandığında aktivitenin statüsünün zamanında güncellenmesi performans açısından çok önemlidir. Saha sorumluluğunda olan bu sürecin süre hesaplamalarında aktivite statüleri arasındaki geçiş ayrı; hekime gönderim/dönüş süresi ayrı hesaplanmaktadır. doğru ölçümleme için aşağıdaki adımların <span style="border-bottom:0.05em solid">zamanında</span> yapılması elzemdir.</p><ul id="2aba9ca9-e2ba-80c7-b470-c9fb123b535c" class="bulleted-list"><li style="list-style-type:disc">Hekim Eklenmesi</li></ul><ul id="2aba9ca9-e2ba-8034-a4f0-c930264f5caa" class="bulleted-list"><li style="list-style-type:disc">Hekimin yanıtının girilmesi</li></ul><ul id="2aba9ca9-e2ba-80bd-ac35-c2a20f9a7115" class="bulleted-list"><li style="list-style-type:disc">statünün güncellenmesi (<strong>Fiyat çalışması</strong> yada <strong>Gözden Geçir</strong> olarak)</li></ul><figure id="2aba9ca9-e2ba-80b3-8f9a-e47c12d53160" class="image"><a href="image%207.png"><img style="width:609.984375px" src="image%207.png"/></a></figure><p id="2aba9ca9-e2ba-8025-a032-f4700259ee91" class="">Hekimden gelen yanıta göre değerlendirme, iki yönlü olarak (<strong>TAMAMLANDI </strong>veya <strong>OLUMSUZ) </strong>kapatılabilir. Hekim Değerlendirme aşamasının kendi içerisindeki bazı kurallar çerçevesinde aktivitenin statüsü güncellenmelidir.</p><ul id="2aba9ca9-e2ba-8058-833e-e6831bbe668d" class="bulleted-list"><li style="list-style-type:disc">Hekimin cevabı tedavi planı hazırlamaya uygun bir cevap ise aktivitenin statüsü <strong>HEKİM DEĞERLENDİRMESİ&gt;FİYAT ÇALIŞMASI (13)</strong></li></ul><ul id="2aba9ca9-e2ba-80f6-8bc5-f6c68a1159e0" class="bulleted-list"><li style="list-style-type:disc">Hekimin cevabı yukarıda saydığımız sebeplerden ötürü <span style="border-bottom:0.05em solid">fiyatlanması mümkün olmayan</span> bir durumda ise değerlendirme <strong>OLUMSUZ </strong>kapatıldıktan sonra aktivite statüsü <strong>HEKİM DEĞERLENDİRMESİ&gt;GÖZDEN GEÇİR (27)</strong></li></ul><p id="2aba9ca9-e2ba-801c-a464-e1a58820436d" class="">Hekim değerlendirmesi statüsündeki aktivitelerin statü güncellemelerine dair bazı kurallar mevcuttur. </p><ul id="2aba9ca9-e2ba-8075-adff-e1cffe2162df" class="bulleted-list"><li style="list-style-type:disc"><strong>AKTİF</strong> durumda olan hekim değerlendirmesi varsa statü değiştirilemez.</li></ul><ul id="2aba9ca9-e2ba-804f-a7bb-e57dd82d760f" class="bulleted-list"><li style="list-style-type:disc">Statünün <strong>FİYAT ÇALIŞMASI (13)</strong> olarak güncellenebilmesi için <span style="border-bottom:0.05em solid">en az</span> bir hekim görüşünün <strong>TAMAMLANDI</strong> olması gerekmektedir.</li></ul><ul id="2aba9ca9-e2ba-80b1-9e78-f7dc68272079" class="bulleted-list"><li style="list-style-type:disc">Hekim değerlendirmesi (yada değerlendirmeleri) <span style="border-bottom:0.05em solid">sadece</span> <strong>OLUMSUZ</strong> ise statü <strong>GÖZDEN GEÇİR(27)</strong> olarak güncellenebilir.</li></ul></div></p><h2 id="2aba9ca9-e2ba-8035-9c80-cf299b676470" class=""><mark class="highlight-orange_background">Hekim Önerilerinin Fiyatlandırılması ve Tedavi Taslağı Oluşturma</mark></h2><p id="2aba9ca9-e2ba-8079-91ac-f7b32ced8621" class="">Hekimin değerlendirmesine göre oluşturulabilecek tedavi planının fiyatlandırması, bunun yatış-gün detayıyla beraber tedavi planı taslağı olarak sisteme eklenmesi süreci saha yetkililerince takip edilir/tamamlanır. Sürecin başarı ile tamamlanması ardından aktivite statüsü <strong>TEKLİF AŞAMASINDA </strong>olarak güncellenmesi gerekmektedir. Bu sayede aktivitede medikal değerlendirme süreci tamamlanır (Şubenin süreci sona erer); aktivitenin Merkez/Ofis yetkilisinin hastaya cevabı iletmesi için sorumluluğuna aktarılması sağlanır.</p><p id="2aba9ca9-e2ba-80bb-a2f7-d51b0185899c" class="">Bu ilerlemenin ilk aşaması olan fiyatlandırma kısmıyla alakalı iki seçenek mevcuttur.</p><ul id="2aba9ca9-e2ba-802e-afb0-f802e208fe99" class="bulleted-list"><li style="list-style-type:disc">Bölge/Ülke özelinde üzerinde önceden anlaşılmış paket fiyatlar üzerinden tedavi taslağı ekleme (14)</li></ul><ul id="2aba9ca9-e2ba-80af-a957-f5d8c701ba55" class="bulleted-list"><li style="list-style-type:disc">Smart Pricing entegrasyonuyla fiyat alma sürecini şubelerdeki Fiyat Verme ekiplerinden talep etme (30&gt;31)</li></ul><figure id="2aba9ca9-e2ba-807f-9e8c-d0db802c7284" class="image"><a href="image%208.png"><img style="width:576px" src="image%208.png"/></a></figure><h3 id="2aba9ca9-e2ba-80d1-aab9-e50a4afe2f38" class=""><mark class="highlight-orange_background">Smart Pricing</mark></h3><p id="2aba9ca9-e2ba-803f-a7e5-d4650befcafb" class="">Smart Pricing in kullanımı ile alakalı adım şu şekildedir.</p><ul id="2aba9ca9-e2ba-80f9-a744-d486fe4050b7" class="bulleted-list"><li style="list-style-type:disc">Hekim Değerlendirmesi <strong>TAMAMLANDI </strong>olan hekim satırı seçilir. </li></ul><figure id="2aba9ca9-e2ba-8019-a2ee-f6a56f539210" class="image"><a href="image%209.png"><img style="width:609.984375px" src="image%209.png"/></a></figure><ul id="2aba9ca9-e2ba-80b7-877e-cced4392ab35" class="bulleted-list"><li style="list-style-type:disc">Açılan pencerede saha yetkilisinin <strong>SMART PRICING GÖNDERİLECEK NOT </strong>alanına fiyatlamaya dair ekstra bir notu varsa (bölge/ülke detayı, ekstra malzeme yada paket dışı uzun yatış vs) bunları ekleyerek <strong>GÖNDER</strong> e basar. Böylelikle, hekimin değerlendirmesi hekimin notu ve saha yetkilisinin ekstra notuyla beraber şubelerin Fiyat Verme ekiplerine iş kaydı oluşturur.</li></ul><ul id="2aba9ca9-e2ba-80ca-9680-faf57da2c895" class="bulleted-list"><li style="list-style-type:disc">Smart Pricing sürecinin statü bilgisi Eklenen Hekimler tablosu <strong>Agent Statu </strong>den takip edilebilir. Smart Pricing süreci tamamlandığında Agent Statü <strong>UHM FİYAT İLETİLDİ </strong>olarak görünür.</li></ul><figure id="2aba9ca9-e2ba-8093-9fd9-e2d151ebbf0d" class="image"><a href="image%2010.png"><img style="width:609.9375px" src="image%2010.png"/></a></figure><ul id="2aba9ca9-e2ba-80a5-bb5b-df41ebbe2431" class="bulleted-list"><li style="list-style-type:disc">Smart Pricing ile gelen teklifi görebilmek ve tedavi taslağını tamamlamak için Eklenen Hekimler satırı seçilir ve <strong>TEDAVİ PLANI EKLE </strong>Butonuna basılır. </li></ul><figure id="2aba9ca9-e2ba-80eb-90dd-e5616bd80f33" class="image"><a href="tempsnip.png"><img style="width:609.984375px" src="tempsnip.png"/></a></figure><ul id="2aba9ca9-e2ba-8003-91ac-e6685b6b0225" class="bulleted-list"><li style="list-style-type:disc">Gelen formda (<strong>TEDAVİ PLANI) </strong>Fiyat Vermenin ilettiği detaylar <strong>SMART PRICING</strong> ve <strong>SMART PRICING NOT</strong> alanlarında yer alır.</li></ul><figure id="2aba9ca9-e2ba-8073-a9ea-faff691c389c" class="image"><a href="image%2011.png"><img style="width:609.984375px" src="image%2011.png"/></a></figure><h3 id="2aba9ca9-e2ba-8092-9ee9-e9105c58de2b" class=""><mark class="highlight-orange_background">Tedavi Planı Ekleme</mark></h3><p id="2aba9ca9-e2ba-80a0-94e7-f16570cc9b66" class="">Fiyatlama Smart Pricing ile yada paket fiyat ekleme yoluyla yapılsın, iki işlemin sonrasında da tedavi planı eklemek için aynı adımlar izlenir.</p><ul id="2aca9ca9-e2ba-8054-8e7f-d5e701bb8345" class="bulleted-list"><li style="list-style-type:disc"><strong>TAMAMLANDI </strong>durumundaki hekim değerlendirmesi seçilir ve <strong>TEDAVİ PLANI EKLE </strong>butonuna basılır.</li></ul><ul id="2aca9ca9-e2ba-802d-b2ea-e10178b9b118" class="bulleted-list"><li style="list-style-type:disc">Açılan formda (TEDAVİ PLANI <em>Resim 17</em>) hekimin görüşüne göre verilen Smart Pricing fiyatlandırması (<strong>SMART PRICING</strong> ve <strong>SMART PRICING NOT</strong> alanları) veya elimizde bulunan paket fiyatlara göre tedavi planı taslağı aşağıdaki adımlara göre girilir.<ul id="2aca9ca9-e2ba-800f-9ba7-d36eeb3de40a" class="bulleted-list"><li style="list-style-type:circle">Ürün grubu (1) Diğer olarak seçilir.</li></ul><ul id="2aca9ca9-e2ba-80b8-b585-f4ffa217f558" class="bulleted-list"><li style="list-style-type:circle">Hekimin görüşüne göre olası tedavi planını kronolojik olarak ve fiyatlandırmalarında tedavi planı alanına ekleyerek (2) (<span style="border-bottom:0.05em solid">toplam değil</span>) detaylandırılır.</li></ul><ul id="2aca9ca9-e2ba-8080-8819-e11d8e2f90b9" class="bulleted-list"><li style="list-style-type:circle">Tedavi planıyla alakalı bilinmesi gereken başka detaylar varsa, (örneğin ameliyat 2 aşamalı yada kullanılacak malzeme çeşidine göre farklı fiyatlar gibi detayları Ekstra Notlar bölümüne (3) eklenir.</li></ul><ul id="2aca9ca9-e2ba-809d-9844-cdf1c0654b18" class="bulleted-list"><li style="list-style-type:circle">Yatış ve TR de kalış süresini<strong> xx+xx+xx</strong> formatında yazılır (4)</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aca9ca9-e2ba-8049-a000-f27a7b7e5745"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aca9ca9-e2ba-800c-a8e4-e174df85f285" class="">Ayaktan tedavilerde yatış gün 0+0+xx şeklinde yazılmalıdır.</p></div></figure><ul id="2aca9ca9-e2ba-80e6-a2c7-fd2b9b81803a" class="bulleted-list"><li style="list-style-type:circle">Toplam bütçe <span style="border-bottom:0.05em solid">sadece rakamlarla ve para birimi doğru seçilerek</span> eklenir. (5 ve 6). </li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aca9ca9-e2ba-8003-8d0b-cc366bf541e5"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="2aca9ca9-e2ba-8048-8167-c8946b49f5eb" class="">Eğer alternatifli tedaviler söz konusuysa <strong>Ekstra Notlar</strong> kısmında alternatifler detaylandırılır ve en yüksek bütçeli tedavinin toplam bedeli <strong>Fiyat </strong>kısmına eklenir.</p></div></figure><ul id="2aca9ca9-e2ba-80f8-be3e-d3a4133c7635" class="bulleted-list"><li style="list-style-type:circle">Kaydet butonuna basılarak tedavi planı kaydedilir (7) ve aktivite statüsü <strong>TEKLİF AŞAMASINDA </strong>olarak güncellenir.</li></ul><figure id="2aca9ca9-e2ba-803b-bfc4-e94e665253ce" class="image"><a href="4.11.png"><img style="width:624px" src="4.11.png"/></a></figure></li></ul><h2 id="2aca9ca9-e2ba-8011-9738-cabc321c9a83" class=""><mark class="highlight-purple_background">Hastaya Yanıtın İletilmesi ve Takibi</mark></h2><figure id="2aca9ca9-e2ba-8029-b143-f84271387bde" class="image"><a href="image%2012.png"><img style="width:681.953125px" src="image%2012.png"/></a></figure><p id="2aca9ca9-e2ba-806f-bb61-c4ca935c04ea" class="">Aktivitenin <strong>TEKLİF AŞAMASINDA</strong> statüsüne güncellenmesi, şubede değerlendirme sürecinin başarılı bir şekilde tamamlandığı ve vakaya dair <span style="border-bottom:0.05em solid">en az bir</span> Hekim Değerlendirmesi ve <span style="border-bottom:0.05em solid">en az bir</span> tedavi planı taslağı olduğu anlamına gelir.</p><p id="2aca9ca9-e2ba-80f9-bbc1-f5333e05ef75" class="">Bu statüdeki aktiviteler artık <span style="border-bottom:0.05em solid">Merkez/Ofis yetkilisinin sorumluluğuna</span> geçmiş olup, kullanıcıdan beklenen şubeden alınan detaylarla birlikte hastaya bir tedavi planı sunması; hastayla bu bilgileri paylaştıktan sonra aktivite statüsünü <strong>GERİ DÖNÜŞ BEKLENİYOR </strong>olarak güncellenmesidir.</p><p id="2aca9ca9-e2ba-80f9-a3d9-cb99a7d1021d" class="">Hastanın verdiği geri bildirime göre Merkez/Ofis yetkilisi şu yolları izleyebilir:</p><ul id="2aca9ca9-e2ba-805c-a64a-e8d5c39463fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Eğer hasta verilen teklifi olumlu karşılayıp randevu talebinde bulunursa;</strong> kullanıcı randevu detaylarıyla beraber statüyü <strong>RANDEVU TALEBİ</strong> olarak günceller ve süreci ikinci fazda <strong>(Randevu Talebi Faz 2) </strong>takip eder.</li></ul><ul id="2aca9ca9-e2ba-80e1-a504-eb70d831094c" class="bulleted-list"><li style="list-style-type:disc"><strong>Eğer hasta, iletilen teklifin maddi açıdan yüksek olduğunu söylerse</strong>; kullanıcı fiyatlandırmanın yeniden değerlendirmesi amacıyla statüyü <strong>İNDİRİM TALEBİ</strong> olarak günceller. Merkezi Fiyat verme birimi bu talebin tekrar değerlendirmesi hususunda şube ile koordinasyonu sağlar. Değerlendirme sonrasında da aktivite statüsü tekrar <strong>TEKLİF AŞAMASINDA</strong> olarak güncellenir ve kullanıcıdan hastaya iletip gelen dönüşe göre aktiviteyi uygun statüye güncellemesi beklenir.</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2aca9ca9-e2ba-80a0-8b80-f59c44957d22"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="2aca9ca9-e2ba-801b-9229-ee1a5efdd567" class="">İndirim talebinde hastanın beklentisini/bütçesini Yorum alanından aktarmak, sürecin hızlı sonuçlanmasına katkısı olacaktır.</p></div></figure><ul id="2aca9ca9-e2ba-803a-84e4-cdb17440f753" class="bulleted-list"><li style="list-style-type:disc"><strong>Eğer hasta, teklifi olumlu bulmasına rağmen randevu talebi/tedaviye başlama süreci uzun sürecek ise (Kurum hastaları, vize bekleyen hastalar yada para toplayan hastalar);</strong> aktivitenin durumu <strong>LONG TERM</strong> olarak güncellenir. <strong>GERİ DÖNÜŞ BEKLENİYOR</strong> ile <strong>LONG TERM</strong> kullanımı arasındaki temel fark, hastanın geliş sürecinin uzunluğudur, iki statünün de final statülere kadar takibi yapılacaktır, ancak bu iki statünün referans süreleri farklı olacaktır.</li></ul><ul id="2aca9ca9-e2ba-8063-9d61-cfee1978a9f9" class="bulleted-list"><li style="list-style-type:disc"><strong>Eğer hasta, çeşitli sebeplerden ötürü gelmeyeceğini/gelemeyeceğinin bilgisini verirse;</strong> aktivite statüsü <strong>KAPATILDI</strong> olarak sebebiyle beraber güncellenir.</li></ul><p id="2aca9ca9-e2ba-805f-8771-efdd35fd0798" class="">
+</p><p id="2aca9ca9-e2ba-80d8-8d9c-f22ac965bbb9" class="">
+</p><p id="2aca9ca9-e2ba-80c7-a1d9-f11f80c0bc34" class="">
+</p><p id="2aca9ca9-e2ba-80ba-88dc-d608e7c5179a" class="">
+</p><p id="2aca9ca9-e2ba-8094-9a8e-c3cd6d215fdd" class="">
+</p><p id="2aca9ca9-e2ba-80f3-b25e-cc5d6e6387a7" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
